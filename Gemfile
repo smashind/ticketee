@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-gem "bootstrap-sass", "~> 3.3"
-gem "font-awesome-rails"
-gem "simple_form", "~> 3.1.0"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
@@ -15,6 +12,13 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
+
+gem "bootstrap-sass", "~> 3.3"
+gem "font-awesome-rails"
+gem "simple_form", "~> 3.1.0"
+gem "devise", "~> 3.4.1"
+gem "foreigner"
+gem "pundit", "~> 0.3.0"
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

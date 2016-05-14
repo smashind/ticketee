@@ -4,10 +4,13 @@ class TicketsController < ApplicationController
 
 	def new
 		@ticket = @project.tickets.build
+		authorize @ticket, :create?
 	end
 
 	def create
 		@ticket = @project.tickets.build(ticket_params)
+		@ticket.author = current_user
+		authorize @ticket, :create?
 
 		if @ticket.save
 			flash[:notice] = "Ticket has been created."
@@ -19,6 +22,27 @@ class TicketsController < ApplicationController
 	end
 
 	def show
+		authorize @ticket, :show?
+	end
+
+	def edit
+	end
+
+	def update
+    if @ticket.update(ticket_params)
+    	flash[:notice] = "Ticket has been updated."
+    	redirect_to [@project, @ticket]
+    else
+    	flash.now[:alert] = "Ticket has not been updated."
+    	render "edit"
+    end
+	end
+
+	def destroy
+    @ticket.destroy
+    flash[:notice] = "Ticket has been deleted."
+
+    redirect_to @project
 	end
 
 	private

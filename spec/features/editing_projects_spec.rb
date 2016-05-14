@@ -1,8 +1,12 @@
 require "rails_helper"
 
-RSpec.feature "Users can edit existing projects" do
+RSpec.feature "Project managers can edit existing projects" do
+	let(:user) { FactoryGirl.create(:user) }
+	let(:project) { FactoryGirl.create(:project) }
+	
 	before do
-		project = FactoryGirl.create(:project)
+		login_as(user)
+		assign_role!(user, :manager, project)
 		visit "/"
 		click_link project.name
 		click_link "Edit Project"
