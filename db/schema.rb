@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423201811) do
+ActiveRecord::Schema.define(version: 20160604204759) do
 
   create_table "projects", force: true do |t|
     t.string   "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20160423201811) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "author_id"
+    t.string   "attachment"
   end
 
   add_index "tickets", ["author_id"], name: "index_tickets_on_author_id"
