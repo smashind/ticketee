@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160611201830) do
+ActiveRecord::Schema.define(version: 20160717222217) do
 
   create_table "attachments", force: true do |t|
     t.string   "file"
@@ -21,6 +21,17 @@ ActiveRecord::Schema.define(version: 20160611201830) do
   end
 
   add_index "attachments", ["ticket_id"], name: "index_attachments_on_ticket_id"
+
+  create_table "comments", force: true do |t|
+    t.text     "text"
+    t.integer  "ticket_id"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["author_id"], name: "index_comments_on_author_id"
+  add_index "comments", ["ticket_id"], name: "index_comments_on_ticket_id"
 
   create_table "projects", force: true do |t|
     t.string   "name"
